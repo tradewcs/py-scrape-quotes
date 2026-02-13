@@ -22,7 +22,10 @@ def get_quotes() -> list[Quote]:
         for quote_element in quote_elements:
             text = quote_element.find("span", class_="text").get_text()
             author = quote_element.find("small", class_="author").get_text()
-            tags = [tag.get_text() for tag in quote_element.find_all("a", class_="tag")]
+            tags = [
+                tag.get_text()
+                for tag in quote_element.find_all("a", class_="tag")
+            ]
             qoutes.append(Quote(text, author, tags))
 
         next_button = soup.find("li", class_="next")
